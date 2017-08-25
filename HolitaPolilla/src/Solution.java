@@ -21,14 +21,36 @@ public class Solution {
 					second = numbers[i];
 				}
 			}
-			total = first * 10 + second;
-			if (total == 12) {
-				return "00" + s.substring(2, 8);
-			} else {
+			total = first * 10 + second+12;
+			if (total == 24) {
+				return "12" + s.substring(2, 8);
+			} 
+			else if(total<10){
+                
+				return "0"+((Integer) total).toString() + s.substring(2, 8);
+			}
+			else {
+				
 				return ((Integer) total).toString() + s.substring(2, 8);
 			}
 		} else {
+
+			if (s.charAt(8) == 'a' || s.charAt(8) == 'A') {
+				for (int i = 0; i < numbers.length; i++) {
+					if (((Integer) numbers[i]).toString().equals(s.substring(0, 1))) {
+						first = numbers[i];
+					}
+					if (((Integer) numbers[i]).toString().equalsIgnoreCase(s.substring(1, 2))) {
+						second = numbers[i];
+					}
+				}
+				total = first * 10 + second+12;
+				if (total == 24) {
+					return "00" + s.substring(2, 8);
+				} 
+			}	
 			return s.substring(0, 8);
+			
 		}
 
 	}
